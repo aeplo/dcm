@@ -1,14 +1,14 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  },
-}
+     const nextConfig = {
+       experimental: {
+         serverActions: {
+           allowedOrigins: [
+             'localhost:3000',
+             '*.app.github.dev',  // For Codespaces
+             // Add other proxies/tunnels as needed, e.g., '*.ngrok.io'
+           ],
+         },
+       },
+     };
 
 export default nextConfig

@@ -2,8 +2,8 @@
 
 import type React from "react"
 
-import { createClient } from "@/lib/supabase/server"
-import { useState } from "react"
+import { createClient } from "@/lib/supabase/client"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -16,20 +16,9 @@ import Link from "next/link"
 import { createRack, type CreateRackData } from "@/lib/actions/rack-management"
 import { toast } from "@/hooks/use-toast"
 
-// This would normally come from a server component or API
-const mockDataCenters = [
-  { id: "1", name: "DC-East-01", location: "New York" },
-  { id: "2", name: "DC-West-01", location: "California" },
-  { id: "3", name: "DC-Central-01", location: "Chicago" },
-]
-
-
-
-
 
 export default function NewRackPage() {
 
-  const supabase = await createClient()
 
   // Fetch data center
 
@@ -47,8 +36,8 @@ export default function NewRackPage() {
     height_units: 42,
     power_capacity_watts: undefined,
     weight_capacity_kg: undefined,
-    status: "available",
-    notes: "",
+    status: "available"
+    // notes: "",
   })
 
   useEffect(() => {
@@ -248,7 +237,7 @@ export default function NewRackPage() {
               </Select>
             </div>
 
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <Label htmlFor="notes">Notes</Label>
               <Textarea
                 id="notes"
@@ -257,7 +246,7 @@ export default function NewRackPage() {
                 placeholder="Additional notes about this rack..."
                 rows={3}
               />
-            </div>
+            </div> */}
 
             <div className="flex gap-3 pt-4">
               <Button type="submit" disabled={isSubmitting}>

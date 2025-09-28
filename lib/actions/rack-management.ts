@@ -12,7 +12,7 @@ export interface CreateRackData {
   power_capacity_watts?: number
   weight_capacity_kg?: number
   status: "available" | "occupied" | "maintenance" | "reserved"
-  notes?: string
+  // notes?: string
 }
 
 export interface CreateDataCenterData {
